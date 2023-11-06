@@ -16,5 +16,17 @@ $(document).ready(function(){
 		console.log(amenityData)
 		$(".amenities_text").text(amenityNames)
 	})
+	$.ajax({
+		url: "http://0.0.0.0:5001/api/v1/status/",
+		type: "GET",
+		success:  (response) => {
+			if (response.status === "OK") {
+				$("#api_status").addClass("available")
+			} else {
+				$("#api_status").removeClass("available")
+			}
+			console.log(response)
+		}
+	})
     
 });
